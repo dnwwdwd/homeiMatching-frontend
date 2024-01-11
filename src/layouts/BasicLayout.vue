@@ -1,6 +1,6 @@
 <template>
   <van-nav-bar
-      title="标题"
+      :title="title"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
@@ -23,9 +23,27 @@
   </van-tabbar>
 </template>
 <script setup lang="ts">
-  import {useRouter} from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
+import {ref} from "vue";
+import routes from "../config/route.ts";
 
   const router = useRouter()
+  const route = useRoute();
+
+  const DEFAULT_TITLE = "homie匹配";
+  const title = ref(DEFAULT_TITLE);
+
+
+  /**
+   * 根据路由切换标题
+   */
+  router.beforeEach((to, from) => {
+    const toPath = to.path;
+    routes.find((route) => {
+      return toPath == route.path;
+    })
+    title.value = route?.title ?? DEFAULT_TITLE;
+  })
 
   const onClickLeft = () => {
     router.back();
@@ -35,6 +53,7 @@
   };
   const onChange = () => {
   }
+
 </script>
 <style scoped>
 

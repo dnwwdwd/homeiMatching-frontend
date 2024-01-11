@@ -11,5 +11,5 @@
         userRole: number;
         planetCode: string;
         createTime: Date;
-        tags: string[];
+        tags: string;
     };
