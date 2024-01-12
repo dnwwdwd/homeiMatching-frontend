@@ -1,5 +1,5 @@
 <template>
-  <user-card-list :user-list="userList" />
+  <user-card-list-by-tags :user-list="userList"/>
   <van-empty v-show="!userList || userList.length < 1" description="暂无符合要求的用户" />
 </template>
 
@@ -8,7 +8,7 @@ import {useRoute} from "vue-router";
 import {onMounted, ref} from "vue";
 import myAxios from "../plugins/myAxios.ts";
 import qs from 'qs';
-import UserCardList from "../components/UserCardList.vue";
+import UserCardListByTags from "../components/UserCardListByTags.vue";
 
 const route = useRoute();
 const { tags } = route.query;

@@ -48,9 +48,19 @@ let originTagList = [
       { text: '大一', id: '大一' },
       { text: '大二', id: '大二' },
       { text: '大三', id: '大三' },
+      { text: '大四', id: '大四' },
     ],
   },
-  /*{ text: '福建', disabled: true },*/
+  {
+    text: '专业',
+    children: [
+      { text: 'Java', id: 'java' },
+      { text: 'C++', id: 'c++' },
+      { text: 'Go', id: '' },
+      { text: '嵌入式', id: '嵌入式' },
+      { text: 'Python', id: 'python' },
+    ],
+  },
 ];
 let tagList = ref(originTagList);
 const onSearch = () => {
@@ -84,7 +94,7 @@ function doClose(tag) {
 const doSearchResult = () =>{
   // 执行搜索后跳转
   router.push({
-    path: '/user/list',
+    path: '/user/listByTag',
     query: {
       tags: activeIds.value
     }

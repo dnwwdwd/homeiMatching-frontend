@@ -3,11 +3,11 @@
     <van-card
         v-for="team in teamList"
         :desc="team.description"
-        thumb="https://c-ssl.duitang.com/uploads/blog/202109/03/20210903213006_ae000.jpg"
+        thumb="https://bpic.588ku.com/element_origin_min_pic/19/03/07/1c1f8a60faf89fd97b0832baab0db608.jpg"
         :title="`${team.teamName}`"
     >
       <template #tags>
-        <van-tag plain type="danger" style="margin-right: 8px; margin-top: 8px">
+        <van-tag plain type="danger" stysle="margin-right: 8px; margin-top: 8px">
           {{ teamStatusEnum[team.status] }}
         </van-tag>
       </template>
