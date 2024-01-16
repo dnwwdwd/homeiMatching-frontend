@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 // 1. 引入你需要的组件
 import {Button, Icon, NavBar, Tabbar, TabbarItem, Tag, Divider, TreeSelect,
-    Row, Col, Cell, CellGroup, Form, Field, Stepper, Search} from 'vant';
+    Row, Col, Cell, CellGroup, Form, Field, Stepper, Search, PickerGroup } from 'vant';
 
 import { DatePicker } from 'vant';
 // 2. 引入组件样式
@@ -29,6 +29,7 @@ app.use(Button);
 app.use(Stepper);
 app.use(DatePicker);
 app.use(Search);
+app.use(PickerGroup);
 
 const router = VueRouter.createRouter({
     // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。

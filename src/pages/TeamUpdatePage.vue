@@ -30,6 +30,22 @@
         <van-date-picker @confirm="onConfirm" @cancel="showPicker = false" />
       </van-popup>
 
+<!--      <van-picker-group
+          title=" 过期时间"
+          :tabs="['选择过期日期', '请选择过期时间']"
+          @confirm="onConfirm"
+          @cancel="showPicker = false"
+      >
+        <van-date-picker
+            v-model="currentDate"
+            :min-date="minDate"
+            :max-date="maxDate"
+        />
+        <van-time-picker v-model="updateTeamData.expireTime" />
+      </van-picker-group>-->
+
+      <van-uploader :after-read="afterRead" />
+
 
       <van-field name="radio" label="单选框">
         <template #input>
@@ -70,6 +86,8 @@ const route = useRoute();
 const updateTeamData = ref({});
 
 const showPicker = ref(false);
+
+const teamAvatar = ref();
 
 const id = route.query.id;
 
@@ -114,6 +132,15 @@ const onSubmit = async () => {
     showToast("更新队伍失败");
   }
 }
+/**
+ * 更新队伍头像
+ * @param file
+ */
+const afterRead = (file) => {
+  // 此时可以自行将文件上传至服务器
+   teamAvatar.value = console.log(file.objectUrl);
+   EventBus.$emit('updateteamAvatar', teamAvatar.value);
+};
 
 </script>
 

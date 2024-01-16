@@ -3,8 +3,10 @@
     <van-card
         v-for="team in teamList"
         :desc="team.description"
-        thumb="https://bpic.588ku.com/element_origin_min_pic/19/03/07/1c1f8a60faf89fd97b0832baab0db608.jpg"
+        thumb="teamAvatarUrl"
         :title="`${team.teamName}`"
+        @click="doTeamIntro(team)"
+
     >
       <template #tags>
         <van-tag plain type="danger" stysle="margin-right: 8px; margin-top: 8px">
@@ -24,11 +26,11 @@
       </template>
       <template #footer>
         <van-button size="mini" color="#1989FA" v-if="team.userId !== currentUser?.id  && !team.hasJoin"
-                    @click="preJoinTeam(team)">
+                    @click.stop="preJoinTeam(team)">
           加入队伍</van-button>
-        <van-button v-if="team.userId === currentUser?.id" size="mini" color="#1989FA" @click="doUpdateTeam(team.id)">更新队伍</van-button>
-        <van-button size="mini" v-if="team.hasJoin" color="#1989FA" @click="doQuitTeam(team.id)">退出队伍</van-button>
-        <van-button v-if="team.userId === currentUser?.id" size="mini" type="danger" plain @click="doDeleteTeam(team.id)">解散队伍</van-button>
+        <van-button v-if="team.userId === currentUser?.id" size="mini" color="#1989FA" @click.stop="doUpdateTeam(team.id)">更新队伍</van-button>
+        <van-button size="mini" v-if="team.hasJoin" color="#1989FA" @click.stop="doQuitTeam(team.id)">退出队伍</van-button>
+        <van-button v-if="team.userId === currentUser?.id" size="mini" type="danger" plain @click.stop="doDeleteTeam(team.id)">解散队伍</van-button>
       </template>
     </van-card>
     <!--输入密码框-->
@@ -45,7 +47,7 @@
   import {teamStatusEnum} from "../constants/team.ts";
   import myAxios from "../plugins/myAxios.ts";
   import {showFailToast, showSuccessToast} from "vant";
-  import {onMounted, ref} from "vue";
+  import {onMounted, ref, watchEffect} from "vue";
   import {getCurrentUser} from "../services/user.ts";
   import {useRouter} from "vue-router";
 
@@ -59,8 +61,10 @@
   const joinTeamId = ref();
 
   const currentUser = ref();
-
+  const teamAvatarUrl = ref('https://bpic.588ku.com/element_origin_min_pic/19/03/07/1c1f8a60faf89fd97b0832baab0db608.jpg');
   const router = useRouter();
+
+  const EventBus = new Vue();
 
   onMounted(async () => {
     currentUser.value = await getCurrentUser();
@@ -135,6 +139,37 @@
       showFailToast("解散失败");
     }
   }
+
+  /**
+   * 点击跳转队伍详情页
+   * @param val
+   */
+  const doTeamIntro = (team) => {
+    router.push({
+      path: '/team/introduce',
+      query: {
+        teamName: team.teamName,
+        description: team.description,
+        expireTime: team.expireTime,
+        maxNum: team.maxNum,
+        status: team.status,
+        createTime: team.createTime,
+        createUserName: team.createUser?.username,
+        hasJoinNum: team.hasJoinNum,
+      }
+    })
+  }
+
+  const updateTeamAvatar = () => {
+    EventBus.$on('updateteamAvatar', (teamAvatar) => {
+      teamAvatarUrl.value = teamAvatar;
+    })
+  }
+
+  watchEffect(() => {
+    updateTeamAvatar();
+  })
+
   </script>
 
   <style scoped>

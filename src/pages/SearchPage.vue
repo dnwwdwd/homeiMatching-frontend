@@ -36,10 +36,13 @@ const router = useRouter();
 const searchText = ref('');
 let originTagList = [
   {
-    text: '性别',
+    text: '专业',
     children: [
-      { text: '男', id: '男' },
-      { text: '女', id: '女' },
+      { text: 'Java', id: 'java' },
+      { text: 'C++', id: 'c++' },
+      { text: 'Go', id: 'go' },
+      { text: '嵌入式', id: '嵌入式' },
+      { text: 'Python', id: 'python' },
     ],
   },
   {
@@ -49,16 +52,26 @@ let originTagList = [
       { text: '大二', id: '大二' },
       { text: '大三', id: '大三' },
       { text: '大四', id: '大四' },
+      { text: '研一', id: '研一' },
+      { text: '研二', id: '研二' },
+      { text: '研三', id: '研三' },
     ],
   },
   {
-    text: '专业',
+    text: '性别',
     children: [
-      { text: 'Java', id: 'java' },
-      { text: 'C++', id: 'c++' },
-      { text: 'Go', id: '' },
-      { text: '嵌入式', id: '嵌入式' },
-      { text: 'Python', id: 'python' },
+      { text: '男', id: '男' },
+      { text: '女', id: '女' },
+    ],
+  },
+  {
+    text: '状态',
+    children: [
+      { text: '单身', id: '单身' },
+      { text: '有对象', id: '有对象' },
+      { text: '已婚', id: '已婚' },
+      { text: 'emo', id: 'emo' },
+      { text: '内卷', id: '内卷' },
     ],
   },
 ];

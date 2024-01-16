@@ -11,10 +11,12 @@ import UserUpdatePage from "../pages/UserUpdatePage.vue";
 import UserJoinPage from "../pages/UserTeamJoinPage.vue";
 import UserTeamCreatePage from "../pages/UserTeamCreatePage.vue";
 import UserRegisterPage from "../pages/UserRegisterPage.vue";
+import TeamIntroPage from "../pages/TeamIntroPage.vue";
 
 const routes = [
     { path: '/', component: Index },
     { path: '/team', title:'找队伍', component: Team },
+    { path: '/team/introduce', title:'队伍详情', component: TeamIntroPage },
     { path: '/team/update', title:'队伍信息修改', component: TeamUpdatePage },
     { path: '/team/add', title:'创建队伍', component: TeamAddPage },
     { path: '/user', title:'个人页面', component: UserPage },

@@ -30,6 +30,19 @@
         <van-date-picker @confirm="onConfirm" @cancel="showPicker = false" />
       </van-popup>
 
+<!--      <van-picker-group
+          title=" 过期时间"
+          :tabs="['选择过期日期', '请选择过期时间']"
+          @confirm="onConfirm"
+          @cancel="showPicker = false"
+      >
+        <van-date-picker
+            v-model="currentDate"
+            :min-date="minDate"
+            :max-date="maxDate"
+        />
+        <van-time-picker v-model="updateTeamData.expireTime" />
+      </van-picker-group>-->
 
       <van-field name="stepper" label="最大人数">
         <template #input>
