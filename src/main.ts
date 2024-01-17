@@ -8,6 +8,7 @@ import { DatePicker } from 'vant';
 // 2. 引入组件样式
 import * as VueRouter from 'vue-router';
 import routes from './config/route.ts';
+import store from './config/store.ts';
 
 
 const app= createApp(App)
@@ -30,6 +31,7 @@ app.use(Stepper);
 app.use(DatePicker);
 app.use(Search);
 app.use(PickerGroup);
+app.use(store);
 
 const router = VueRouter.createRouter({
     // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。

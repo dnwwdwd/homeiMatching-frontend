@@ -3,10 +3,9 @@
     <van-card
         v-for="team in teamList"
         :desc="team.description"
-        thumb="teamAvatarUrl"
+        :thumb="(newTeamAvatarUrl ? `https://bpic.588ku.com/element_origin_min_pic/19/03/07/1c1f8a60faf89fd97b0832baab0db608.jpg` : `newTeamAvatarUrl`)"
         :title="`${team.teamName}`"
         @click="doTeamIntro(team)"
-
     >
       <template #tags>
         <van-tag plain type="danger" stysle="margin-right: 8px; margin-top: 8px">
@@ -47,9 +46,10 @@
   import {teamStatusEnum} from "../constants/team.ts";
   import myAxios from "../plugins/myAxios.ts";
   import {showFailToast, showSuccessToast} from "vant";
-  import {onMounted, ref, watchEffect} from "vue";
+  import {onMounted, ref} from "vue";
   import {getCurrentUser} from "../services/user.ts";
   import {useRouter} from "vue-router";
+  import {mapState} from "vuex";
 
   interface TeamCardListProps{
     teamList: TeamType;
@@ -61,10 +61,9 @@
   const joinTeamId = ref();
 
   const currentUser = ref();
-  const teamAvatarUrl = ref('https://bpic.588ku.com/element_origin_min_pic/19/03/07/1c1f8a60faf89fd97b0832baab0db608.jpg');
+  const teamAvatarUrl = mapState('team', ['teamAvatarUrl']);
+  const newTeamAvatarUrl = ref(teamAvatarUrl);
   const router = useRouter();
-
-  const EventBus = new Vue();
 
   onMounted(async () => {
     currentUser.value = await getCurrentUser();
@@ -160,15 +159,6 @@
     })
   }
 
-  const updateTeamAvatar = () => {
-    EventBus.$on('updateteamAvatar', (teamAvatar) => {
-      teamAvatarUrl.value = teamAvatar;
-    })
-  }
-
-  watchEffect(() => {
-    updateTeamAvatar();
-  })
 
   </script>
 

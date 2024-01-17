@@ -79,6 +79,7 @@ import {useRoute, useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import myAxios from "../plugins/myAxios.ts";
 import {showToast} from "vant";
+import {useStore} from "vuex";
 
 const router = useRouter();
 const route = useRoute();
@@ -90,6 +91,8 @@ const showPicker = ref(false);
 const teamAvatar = ref();
 
 const id = route.query.id;
+
+const store = useStore();
 
 const onConfirm = ({ selectedValues }) => {
   const currentTime = new Date().toLocaleTimeString();
@@ -135,11 +138,12 @@ const onSubmit = async () => {
 /**
  * 更新队伍头像
  * @param file
+ * @param file
  */
 const afterRead = (file) => {
   // 此时可以自行将文件上传至服务器
    teamAvatar.value = console.log(file.objectUrl);
-   EventBus.$emit('updateteamAvatar', teamAvatar.value);
+   store.commit('updateTeamAvatar', teamAvatar.value);
 };
 
 </script>

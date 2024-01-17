@@ -16,7 +16,8 @@
     "unplugin-vue-components": "^0.26.0",
     "vant": "^4.8.0",
     "vue": "^3.3.11",
-    "vue-router": "4"
+    "vue-router": "4",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.7",
