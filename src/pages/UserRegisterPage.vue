@@ -32,6 +32,14 @@
         placeholder="请填写编号"
         :rules="[{ required: true, message: '请填写编号' }]"
     />
+      <van-field
+          v-model="planetCode"
+          type="text"
+          name="性别"
+          label="性别"
+          placeholder="请填写性别"
+          :rules="[{ required: true, message: '请填写性别' }]"
+      />
     </van-cell-group>
     <div style="margin: 16px;">
       <van-button round block type="primary" native-type="submit">
@@ -71,7 +79,6 @@ const onSubmit = async () => {
   }
 }
 </script>
-
 
 <style scoped>
 
