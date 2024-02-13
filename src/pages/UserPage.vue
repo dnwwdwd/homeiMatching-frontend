@@ -1,7 +1,7 @@
 <template>
   <div v-if="user">
-    <van-cell title="去登录" is-link to="/user/login" />
-    <van-cell title="注册" is-link to="/user/register" />
+<!--    <van-cell title="去登录" is-link to="/user/login" />-->
+<!--    <van-cell title="注册" is-link to="/user/register" />-->
     <van-cell title="当前登录用户" :value="user?.username"/>
     <van-cell title="修改信息" is-link to="/user/update" />
     <van-cell title="我创建的队伍" is-link to="/user/team/create" />
@@ -35,7 +35,7 @@ const userLogout = async () => {
   if (res?.code === 0) {
     showToast("退出成功");
     router.push({
-      path: '/'
+      path: '/user/login'
     })
   } else {
     showToast("退出失败");

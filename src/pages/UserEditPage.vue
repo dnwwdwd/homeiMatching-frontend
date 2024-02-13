@@ -38,12 +38,13 @@ const onSubmit = async () => {
   if(!currentUser) {
     showSuccessToast('用户未登录');
     return;
-  }
+  };
 
+  const loginUser = await getCurrentUser();
 
   // todo 把editKey，editName，editValue 提交到后台
   const res = await myAxios.post('/user/update', {
-    'id': 1,
+    'id': loginUser.id,
     [editUser.value.editKey as string]: editUser.value.currentValue,
   });
   if(res.data > 0) {

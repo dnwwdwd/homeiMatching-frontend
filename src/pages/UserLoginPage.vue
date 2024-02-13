@@ -22,6 +22,11 @@
         登录
       </van-button>
     </div>
+    <div style="margin: 16px;">
+      <van-button round block type="primary" is-link to="/user/register">
+        注册
+      </van-button>
+    </div>
   </van-form>
 
 </template>

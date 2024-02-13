@@ -4,9 +4,9 @@
       <van-field
           v-model="userAccount"
           name="userAccount"
-          label="用户名"
-          placeholder="请填写用户名"
-          :rules="[{ required: true, message: '请填写用户名' }]"
+          label="账号"
+          placeholder="请填写账号"
+          :rules="[{ required: true, message: '请填写账号' }]"
       />
       <van-field
           v-model="userPassword"
@@ -33,12 +33,34 @@
         :rules="[{ required: true, message: '请填写编号' }]"
     />
       <van-field
-          v-model="planetCode"
+          v-model="username"
+          name="username"
+          label="用户名"
+          placeholder="请填写用户名"
+          :rules="[{ required: true, message: '请填写用户名' }]"
+      />
+      <van-field
+          v-model="gender"
           type="text"
           name="性别"
           label="性别"
           placeholder="请填写性别"
           :rules="[{ required: true, message: '请填写性别' }]"
+      />
+      <van-field
+          v-model="phone"
+          name="phone"
+          label="手机号"
+          placeholder="手机号"
+          :rules="[{ required: true, message: '请填写手机号' }]"
+      />
+      <van-field
+          v-model="avatarUrl"
+          type="text"
+          name="头像"
+          label="头像"
+          placeholder="请填写头像"
+          :rules="[{ required: true, message: '请填写头像' }]"
       />
     </van-cell-group>
     <div style="margin: 16px;">
@@ -61,6 +83,10 @@ const userAccount = ref('');
 const userPassword = ref('');
 const checkPassword = ref('');
 const planetCode = ref('');
+const gender = ref('');
+const avatarUrl = ref('');
+const username = ref('');
+const phone = ref('');
 
 const onSubmit = async () => {
   const res = await myAxios.post('/user/register', {
@@ -68,6 +94,10 @@ const onSubmit = async () => {
     userPassword: userPassword.value,
     checkPassword: checkPassword.value,
     planetCode: planetCode.value,
+    gender: gender.value === '男' ? 1 : 0,
+    avatarUrl: avatarUrl.value,
+    username: username.value,
+    phone: phone.value,
   });
   if (res?.code === 0) {
     showToast("注册成功");
