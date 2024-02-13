@@ -32,6 +32,10 @@ const router = useRouter();
 
 const userLogout = async () => {
   const res = await myAxios.post('/user/logout');
+  // const currentUser = await getCurrentUser();
+  // if (currentUser === null) {
+  //  showToast("你还未登录！");
+  // }
   if (res?.code === 0) {
     showToast("退出成功");
     router.push({
