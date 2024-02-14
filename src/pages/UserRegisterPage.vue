@@ -74,8 +74,6 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import {useRouter} from "vue-router";
-import myAxios from "../plugins/myAxios";
-import {showToast} from "vant";
 
 const router = useRouter();
 
@@ -88,26 +86,52 @@ const avatarUrl = ref('');
 const username = ref('');
 const phone = ref('');
 
-const onSubmit = async () => {
-  const res = await myAxios.post('/user/register', {
-    userAccount: userAccount.value,
-    userPassword: userPassword.value,
-    checkPassword: checkPassword.value,
-    planetCode: planetCode.value,
-    gender: gender.value === '男' ? 1 : 0,
-    avatarUrl: avatarUrl.value,
-    username: username.value,
-    phone: phone.value,
+// const onSubmit = async () => {
+//   const res = await myAxios.post('/user/register', {
+//     userAccount: userAccount.value,
+//     userPassword: userPassword.value,
+//     checkPassword: checkPassword.value,
+//     planetCode: planetCode.value,
+//     gender: gender.value === '男' ? 1 : 0,
+//     avatarUrl: avatarUrl.value,
+//     username: username.value,
+//     phone: phone.value,
+//   });
+//   if (res?.code === 0) {
+//     showToast("注册成功");
+//     router.push({
+//       path: '/user/registerTags',
+//
+//     })
+//   } else {
+//     showToast("注册失败" + (res.description ? `, ${res.description}` : ''));
+//   }
+// }
+
+
+
+const onSubmit = () => {
+  const registerUserParam = {
+  userAccount: userAccount.value,
+  userPassword: userPassword.value,
+  checkPassword: checkPassword.value,
+  planetCode: planetCode.value,
+  gender: gender.value === '男' ? 1 : 0,
+  avatarUrl: avatarUrl.value,
+  username: username.value,
+  phone: phone.value,
+};
+
+  console.log(userAccount.value);
+  console.log(registerUserParam);
+  router.push({
+    path: '/user/registerTags',
+    query: {
+      registerUser: JSON.stringify(registerUserParam),
+    }
   });
-  if (res?.code === 0) {
-    showToast("注册成功");
-    router.push({
-      path: '/'
-    })
-  } else {
-    showToast("注册失败" + (res.description ? `, ${res.description}` : ''));
-  }
-}
+};
+
 </script>
 
 <style scoped>

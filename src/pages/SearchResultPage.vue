@@ -38,7 +38,7 @@ onMounted(async() => {
     // 如果请求成功，就把响应结果返回给userList
     userList.value = userListData;
   }
-})
+});
 
 </script>
 

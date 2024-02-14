@@ -12,6 +12,7 @@ import UserJoinPage from "../pages/UserTeamJoinPage.vue";
 import UserTeamCreatePage from "../pages/UserTeamCreatePage.vue";
 import UserRegisterPage from "../pages/UserRegisterPage.vue";
 import TeamIntroPage from "../pages/TeamIntroPage.vue";
+import RegisterTagsPage from "../pages/RegisterTagsPage.vue";
 
 const routes = [
     { path: '/', component: Index },
@@ -24,7 +25,8 @@ const routes = [
     { path: '/user/listByTag', title:'搜索结果', component: SearchResultPage },
     { path: '/user/edit', title:'编辑信息', component: UserEditPage },
     { path: '/user/login', title:'登录', component: UserLoginPage },
-    { path: '/user/register', title:'登录', component: UserRegisterPage },
+    { path: '/user/register', title:'注册', component: UserRegisterPage },
+    { path: '/user/registerTags', title:'选择标签', component: RegisterTagsPage },
     { path: '/user/update', title:'个人信息修改', component: UserUpdatePage },
     { path: '/user/team/join', title:'我加入的队伍', component: UserJoinPage },
     { path: '/user/team/create', title:'我创建的队伍', component: UserTeamCreatePage },
