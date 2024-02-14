@@ -1,9 +1,11 @@
 <template>
+  <van-search v-model="searchText" placeholder="搜索附近用户" @search="onSearch"/>
   <van-cell center title="心动模式">
     <template #right-icon>
       <van-switch v-model="isMatchMode" size="24" />
     </template>
   </van-cell>
+
   <user-card-list :user-list="userList" :loading="loading"/>
   <van-empty v-if="!userList || userList.length < 1" description="数据为空" />
 </template>
@@ -17,12 +19,9 @@ import UserCardList from "../components/UserCardList.vue";
 import {UserType} from "../models/user"
 
 const route = useRoute();
-const {tags} = route.query;
-
-
-
+const { tags } = route.query;
+const searchText = ref('');
 const userList = ref([]);
-
 const isMatchMode = ref<boolean>(false);
 const loading = ref(true);
 
@@ -78,7 +77,6 @@ const loadData = async () => {
 watchEffect(() =>{
   loadData();
 })
-
 
 
 </script>

@@ -11,14 +11,25 @@
       </van-tag>
     </template>
     <template #footer>
-      <van-button size="mini">联系我</van-button>
+      <van-button size="mini" @click="showInfoDialog(user)">联系我</van-button>
     </template>
+
   </van-card>
+
   </van-skeleton>
+
+  <van-dialog v-model:show="showDialog" title="你好啊" show-cancel-button>
+    <van-contact-card  type="edit" name="user.username" tel="user.phone" :editable="false" />
+  </van-dialog>
+
 </template>
 
   <script setup lang="ts">
   import {UserType} from "../models/user";
+  import {ref} from "vue";
+
+  const showDialog = ref(false);
+  const clickedUser = ref();
 
   interface UserCardListProps{
     loading: boolean
@@ -27,6 +38,12 @@
   withDefaults(defineProps<UserCardListProps>(), {
     loading: true,
   })
+
+  const showInfoDialog = (user: UserType) => {
+    showDialog.value = true;
+    clickedUser.value= user;
+  }
+
   </script>
 
   <style scoped>

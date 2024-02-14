@@ -1,4 +1,10 @@
 <template>
+    <van-image
+        round
+        width="10rem"
+        height="10rem"
+        src="https://akns-images.eonline.com/eol_images/Entire_Site/20181026/rs_600x600-181126230834-e-asia-iu-things-to-know-thumbnail.jpg?fit=around|1080:1080&output-quality=90&crop=1080:1080;center,top"
+    />
   <van-form @submit="onSubmit">
     <van-cell-group inset>
       <van-field
@@ -60,5 +66,8 @@ const onSubmit = async () => {
 
 </script>
 <style scoped>
+.systemLogo{
+  margin: auto;
+}
 
 </style>
