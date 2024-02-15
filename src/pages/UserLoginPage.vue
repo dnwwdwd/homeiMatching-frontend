@@ -1,10 +1,12 @@
 <template>
+  <div style="text-align: center; margin-top: 15px; margin-bottom: 15px">
     <van-image
         round
-        width="10rem"
-        height="10rem"
+        width="8rem"
+        height="8rem"
         src="https://akns-images.eonline.com/eol_images/Entire_Site/20181026/rs_600x600-181126230834-e-asia-iu-things-to-know-thumbnail.jpg?fit=around|1080:1080&output-quality=90&crop=1080:1080;center,top"
     />
+  </div>
   <van-form @submit="onSubmit">
     <van-cell-group inset>
       <van-field

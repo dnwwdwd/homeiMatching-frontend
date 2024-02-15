@@ -13,6 +13,7 @@ import UserTeamCreatePage from "../pages/UserTeamCreatePage.vue";
 import UserRegisterPage from "../pages/UserRegisterPage.vue";
 import TeamIntroPage from "../pages/TeamIntroPage.vue";
 import RegisterTagsPage from "../pages/RegisterTagsPage.vue";
+import UserIntroPage from "../pages/UserIntroPage.vue";
 
 const routes = [
     { path: '/', component: Index },
@@ -23,6 +24,7 @@ const routes = [
     { path: '/user', title:'个人页面', component: UserPage },
     { path: '/search', title:'搜索', component: SearchPage },
     { path: '/user/listByTag', title:'搜索结果', component: SearchResultPage },
+    { path: '/user/intro', title:'用户详情', component: UserIntroPage },
     { path: '/user/edit', title:'编辑信息', component: UserEditPage },
     { path: '/user/login', title:'登录', component: UserLoginPage },
     { path: '/user/register', title:'注册', component: UserRegisterPage },

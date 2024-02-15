@@ -111,13 +111,6 @@ function doClose(tag) {
 const { registerUser } = route.query;
 
 const doSearchResult =  async () =>{
-  // 执行搜索后跳转
-  // router.push({
-  //   path: '/user/listByTag',
-  //   query: {
-  //     tags: activeIds.value
-  //   }
-  // })
   const registerUserParam = JSON.parse(registerUser);
   console.log(registerUser);
   console.log(activeIds.value);

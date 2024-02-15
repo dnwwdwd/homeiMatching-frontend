@@ -11,25 +11,18 @@
       </van-tag>
     </template>
     <template #footer>
-      <van-button size="mini" @click="showInfoDialog(user)">联系我</van-button>
+      <van-button size="mini" @click="toIntroUser(user.id, user.avatarUrl, user.username, user.profile, user.phone, user.gender, user.email)">联系我</van-button>
     </template>
-
   </van-card>
-
   </van-skeleton>
-
-  <van-dialog v-model:show="showDialog" title="你好啊" show-cancel-button>
-    <van-contact-card  type="edit" name="user.username" tel="user.phone" :editable="false" />
-  </van-dialog>
 
 </template>
 
   <script setup lang="ts">
   import {UserType} from "../models/user";
-  import {ref} from "vue";
+  import {useRouter} from "vue-router";
 
-  const showDialog = ref(false);
-  const clickedUser = ref();
+  const router = useRouter();
 
   interface UserCardListProps{
     loading: boolean
@@ -39,9 +32,24 @@
     loading: true,
   })
 
-  const showInfoDialog = (user: UserType) => {
-    showDialog.value = true;
-    clickedUser.value= user;
+  const toIntroUser = (id: number, avatarUrl: string, username: string,
+                       profile: string, phone: string, gender: number, email: string) => {
+    const userInfoParam = {
+      id: id,
+      avatarUrl: avatarUrl,
+      username: username,
+      profile: profile,
+      phone: phone,
+      gender: gender,
+      email: email
+    }
+    router.push({
+      path: '/user/intro',
+      query: {
+        userInfoParam: JSON.stringify(userInfoParam)
+      }
+    });
+    console.log(userInfoParam);
   }
 
   </script>
