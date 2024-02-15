@@ -1,17 +1,17 @@
 <template>
-  <van-skeleton title avatar :row="3" :loading="loading" v-for="user in userList">
+  <van-skeleton title avatar :row="3" :loading="loading" v-for="friend in friendList">
   <van-card
-      :desc="user.profile"
-      :title="`${user.username}(${user.planetCode})`"
-      :thumb="user.avatarUrl"
+      :desc="friend.profile"
+      :title="`${friend.username}(${friend.planetCode})`"
+      :thumb="friend.avatarUrl"
   >
     <template #tags>
-      <van-tag plain type="danger" v-for="tag in user.tags" style="margin-right: 8px; margin-top: 8px">
+      <van-tag plain type="danger" v-for="tag in friend.tags" style="margin-right: 8px; margin-top: 8px">
         {{ tag }}
       </van-tag>
     </template>
     <template #footer>
-      <van-button size="mini" @click="toIntroUser(user)">联系我</van-button>
+      <van-button size="mini" @click="toChat">聊天</van-button>
     </template>
   </van-card>
   </van-skeleton>
@@ -19,28 +19,24 @@
 </template>
 
   <script setup lang="ts">
+
+  import {useRoute, useRouter} from "vue-router";
   import {UserType} from "../models/user";
-  import {useRouter} from "vue-router";
 
   const router = useRouter();
 
-  interface UserCardListProps{
+
+  interface friendCardListProps{
     loading: boolean
-    userList: UserType[];
+    friendList: UserType[];
   }
-  withDefaults(defineProps<UserCardListProps>(), {
+  withDefaults(defineProps<friendCardListProps>(), {
     loading: true,
   })
 
-  const toIntroUser = (user: UserType) => {
-    router.push({
-      path: '/user/intro',
-      query: {
-        userInfoParam: JSON.stringify(user)
-      }
-    });
-  }
+  const toChat = () => {
 
+  };
   </script>
 
   <style scoped>

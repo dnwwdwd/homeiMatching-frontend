@@ -5,7 +5,6 @@
       <van-switch v-model="isMatchMode" size="24" />
     </template>
   </van-cell>
-
   <user-card-list :user-list="userList" :loading="loading"/>
   <van-empty v-if="!userList || userList.length < 1" description="数据为空" />
 </template>
@@ -33,7 +32,7 @@ const loadData = async () => {
   loading.value = true;
   //心动模式
   if (isMatchMode.value){
-    const  num = 10;
+    const num = 10;
     userListData = await myAxios.get('user/match',{
       params: {
         num,
@@ -48,7 +47,7 @@ const loadData = async () => {
         });
   }else {
     //普通用户使用分页查询
-    userListData = await  myAxios.get('/user/recommend',{
+    userListData = await myAxios.get('/user/recommend',{
       params: {
         pageSize: 8,
         pageNum: 1,

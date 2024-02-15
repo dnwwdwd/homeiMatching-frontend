@@ -35,7 +35,7 @@ const { userInfoParam } = route.query;
 const userInfo = ref(JSON.parse(userInfoParam));
 
 const addFriend = async () => {
-  const res = await myAxios.post('/fri/add', {
+  const res = await myAxios.post('/friend/add', {
     friendId: userInfo.value.id
   });
   if (res?.code === 0) {
