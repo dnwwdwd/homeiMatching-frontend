@@ -112,8 +112,6 @@ const { registerUser } = route.query;
 
 const doSearchResult =  async () =>{
   const registerUserParam = JSON.parse(registerUser);
-  console.log(registerUser);
-  console.log(activeIds.value);
   const userId = await myAxios.post('/user/register', {
     userAccount: registerUserParam.userAccount,
     userPassword: registerUserParam.userPassword,

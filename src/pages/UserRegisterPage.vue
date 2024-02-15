@@ -122,8 +122,6 @@ const onSubmit = () => {
   phone: phone.value,
 };
 
-  console.log(userAccount.value);
-  console.log(registerUserParam);
   router.push({
     path: '/user/registerTags',
     query: {

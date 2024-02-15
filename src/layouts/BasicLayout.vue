@@ -18,6 +18,7 @@
 
   <van-tabbar route @change="onChange">
     <van-tabbar-item to="/" icon="home-o" name="index">主页</van-tabbar-item>
+    <van-tabbar-item to="/friend" icon="friends-o" name="friend">好友</van-tabbar-item>
     <van-tabbar-item to="/team" icon="search" name="team">队伍</van-tabbar-item>
     <van-tabbar-item to="/user" icon="friends-o" name="user">用户</van-tabbar-item>
   </van-tabbar>
