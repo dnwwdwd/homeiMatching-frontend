@@ -12,4 +12,5 @@
         planetCode: string;
         createTime: Date;
         tags: string;
+        distance: number;
     };
