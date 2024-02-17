@@ -4,6 +4,8 @@
         v-for="user in userList"
         :desc="user.profile"
         :title="`${user.username}(${user.planetCode})`"
+        :price="`${user.distance} km`"
+        currency=""
         :thumb="user.avatarUrl"
     >
       <template #tags>
