@@ -77,6 +77,9 @@ watchEffect(() =>{
   loadData();
 })
 
+const onSearch = () => {
+
+};
 
 </script>
 

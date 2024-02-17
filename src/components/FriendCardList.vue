@@ -3,6 +3,8 @@
   <van-card
       :desc="friend.profile"
       :title="`${friend.username}(${friend.planetCode})`"
+      :price="`${friend.distance} km`"
+      currency=""
       :thumb="friend.avatarUrl"
   >
     <template #tags>
