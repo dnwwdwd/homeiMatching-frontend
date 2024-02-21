@@ -3,12 +3,11 @@ import axios from 'axios';
 const isDev = process.env.NODE_ENV === 'development';
 
 const myAxios = axios.create({
-    baseURL: isDev ? 'http://localhost:8080/api' : 'http://47.113.227.23:8080/api',
+    baseURL: isDev ? 'http://localhost:8080/api' : '线上地址',
 })
 
 myAxios.defaults.withCredentials = true; //设置为true
 
-// Add a request interceptor
 myAxios.interceptors.request.use(function (config) {
     console.log('我要发请求啦');
     return config;
@@ -29,6 +28,5 @@ myAxios.interceptors.response.use(function (response) {
     // Do something with response error
     return Promise.reject(error);
 });
-
 
 export default myAxios;

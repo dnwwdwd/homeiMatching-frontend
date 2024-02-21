@@ -18,13 +18,23 @@ const router = useRouter();
 const searchText = ref('');
 
 
+// const listTeam = async (val = '') => {
+//   const res = await myAxios.get('/team/list/my/join', {
+//     params: {
+//       searchText: val,
+//       pageNum: 1,
+//     }
+//   });
+//   if (res?.code === 0) {
+//     teamList.value = res.data;
+//   } else {
+//     showToast("加载队伍失败，请刷新重试！");
+//   }
+//
+// }
+
 const listTeam = async (val = '') => {
-  const res = await myAxios.get('/team/list/my/join', {
-    params: {
-      searchText: val,
-      pageNum: 1,
-    }
-  });
+  const res = await myAxios.get('/team/list/my/join');
   if (res?.code === 0) {
     teamList.value = res.data;
   } else {

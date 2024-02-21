@@ -1,5 +1,5 @@
 <template>
-  <van-search v-model="searchText" placeholder="搜索附近用户" @search="onSearch"/>
+  <van-search v-model="searchText" placeholder="搜索附近用户" @search="onSearch(searchText)"/>
   <van-cell center title="心动模式">
     <template #right-icon>
       <van-switch v-model="isMatchMode" size="24" />
@@ -16,6 +16,7 @@ import {useRoute} from "vue-router";
 import myAxios from "../plugins/myAxios.ts";
 import UserCardList from "../components/UserCardList.vue";
 import {UserType} from "../models/user"
+import {showToast} from "vant";
 
 const route = useRoute();
 const { tags } = route.query;
@@ -77,8 +78,29 @@ watchEffect(() =>{
   loadData();
 })
 
-const onSearch = () => {
-
+const onSearch = async (searchText) => {
+  let userListData;
+  loading.value = true;
+  const res = await myAxios.get('/user/searchNearby', {
+    params: {
+      radius: searchText
+    }
+  })
+  if (res?.code === 0) {
+    userListData = res?.data;
+    if (userListData){
+      userListData.forEach((user: UserType) =>{
+        if (user.tags){
+          user.tags = JSON.parse(user.tags);
+        }
+      })
+      userList.value = userListData;
+    }
+    loading.value = false;
+  } else {
+    showToast('搜索失败');
+  }
+  loading.value = false;
 };
 
 </script>

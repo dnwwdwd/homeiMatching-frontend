@@ -1,7 +1,14 @@
 <template>
   <div v-if="user">
-<!--    <van-cell title="去登录" is-link to="/user/login" />-->
-<!--    <van-cell title="注册" is-link to="/user/register" />-->
+    <div v-if="user" style="text-align: center;">
+      <van-image
+          round
+          width="8rem"
+          height="8rem"
+          :src="user.avatarUrl"
+          style="margin-top: 20px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.4)"
+      />
+    </div>
     <van-cell title="当前登录用户" :value="user?.username"/>
     <van-cell title="修改信息" is-link to="/user/update" />
     <van-cell title="我创建的队伍" is-link to="/user/team/create" />
