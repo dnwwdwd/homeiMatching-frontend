@@ -22,7 +22,7 @@
 
   <script setup lang="ts">
 
-  import {useRoute, useRouter} from "vue-router";
+  import {useRouter} from "vue-router";
   import {UserType} from "../models/user";
 
   const router = useRouter();
@@ -37,7 +37,9 @@
   })
 
   const toChat = () => {
-
+    router.push({
+      path: '/chat'
+    })
   };
   </script>
 
