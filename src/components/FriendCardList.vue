@@ -13,7 +13,7 @@
       </van-tag>
     </template>
     <template #footer>
-      <van-button size="mini" @click="toChat">聊天</van-button>
+      <van-button size="mini" @click="toChat(friend)">聊天</van-button>
     </template>
   </van-card>
   </van-skeleton>
@@ -36,9 +36,14 @@
     loading: true,
   })
 
-  const toChat = () => {
+  const toChat = (friend) => {
     router.push({
-      path: '/chat'
+      path: '/chat',
+      query: {
+        id: friend.id,
+        username: friend.username,
+        userType: 1
+      }
     })
   };
   </script>
