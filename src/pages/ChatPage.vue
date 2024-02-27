@@ -32,6 +32,7 @@
         </div>
       </van-form>
     </div>
+
   </div>
 
 </template>

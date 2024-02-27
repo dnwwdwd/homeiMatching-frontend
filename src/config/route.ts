@@ -18,10 +18,10 @@ import FriendPage from "../pages/FriendPage.vue";
 import ChatPage from "../pages/ChatPage.vue";
 
 const routes = [
-    { path: '/', component: Index },
+    { path: '/', component: Index, meta: {layout: 'basic'}},
     { path: '/team', title:'找队伍', component: Team },
     { path: '/friend', title:'好友', component: FriendPage },
-    { path: '/chat', title:'聊天界面', component: ChatPage },
+    { path: '/chat', title:'聊天界面', component: ChatPage, meta: {layout: 'chat'} },
     { path: '/team/introduce', title:'队伍详情', component: TeamIntroPage },
     { path: '/team/update', title:'队伍信息修改', component: TeamUpdatePage },
     { path: '/team/add', title:'创建队伍', component: TeamAddPage },
