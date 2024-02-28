@@ -1,7 +1,15 @@
 <template>
+  <van-sticky>
+    <van-nav-bar
+        :title="title"
+        left-arrow
+        @click-left="onClickLeft"
+    >
+    </van-nav-bar>
+  </van-sticky>
   <div class="chat-container">
     <div class="content" ref="chatRoom" v-html="stats.content"></div>
-<!--    <van-cell-group inset style="position: fixed;bottom: 0;width: 100%">
+    <van-cell-group inset style="position: fixed;bottom: 0;width: 100%">
       <van-field
           v-model="stats.text"
           center
@@ -12,9 +20,9 @@
           <van-button size="small" type="primary" @click="send" style="margin-right: 16px">发送</van-button>
         </template>
       </van-field>
-    </van-cell-group>-->
+    </van-cell-group>
 
-    <div style="position: fixed; bottom: 50px; width: 100%; padding: 10px; background-color: #fff;">
+<!--    <div style="position: fixed; bottom: 50px; width: 100%; padding: 10px; background-color: #fff;">
       <van-form @submit="send" style="display: flex; align-items: center;">
         <van-cell-group inset>
           <van-field
@@ -31,7 +39,7 @@
           </van-button>
         </div>
       </van-form>
-    </div>
+    </div>-->
 
   </div>
 
@@ -104,9 +112,6 @@ onMounted(async () => {
   stats.value.team.teamName = teamName
   stats.value.chatType = stats.value.chatEnum.PRIVATE_CHAT
   title.value = stats.value.chatUser.username
-  console.log(stats.value.chatUser.username);
-  console.log(stats.value.chatType);
-  console.log(title.value);
   stats.value.user = await getCurrentUser()
 
 
@@ -117,8 +122,6 @@ onMounted(async () => {
           teamId: '',
           toId: stats.value.chatUser.id,
         })
-    console.log(privateMessage);
-    console.log(privateMessage.data);
     privateMessage.data.forEach(chat => {
       if (chat.isMy === true) {
         createContent(null, chat.fromUser, chat.text)
@@ -258,6 +261,10 @@ const send = () => {
       })
     }
   }
+}
+
+const onClickLeft = () => {
+  router.back();
 }
 
 const showUser = (id) => {

@@ -8,7 +8,7 @@
       :thumb="user.avatarUrl"
   >
     <template #tags>
-      <van-tag plain type="danger" v-for="tag in user.tags" style="margin-right: 8px; margin-top: 8px">
+      <van-tag plain color="#ffe1e1" text-color="#ad0000" v-for="tag in user.tags" style="margin-right: 8px; margin-top: 8px">
         {{ tag }}
       </van-tag>
     </template>

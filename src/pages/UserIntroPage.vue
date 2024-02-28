@@ -1,4 +1,12 @@
 <template>
+  <van-sticky>
+    <van-nav-bar
+        :title="`用户详情`"
+        left-arrow
+        @click-left="onClickLeft"
+    >
+    </van-nav-bar>
+  </van-sticky>
   <div v-if="userInfo" style="text-align: center;">
     <van-image
         round
@@ -30,6 +38,7 @@ import {ref} from "vue";
 import myAxios from "../plugins/myAxios";
 import {showToast} from "vant";
 
+const router = useRouter();
 const route = useRoute();
 const { userInfoParam } = route.query;
 
@@ -46,6 +55,9 @@ const addFriend = async () => {
   }
 };
 
+const onClickLeft = () => {
+  router.back();
+};
 </script>
 
 

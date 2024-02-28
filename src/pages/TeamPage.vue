@@ -29,26 +29,6 @@ const doAddTeam = () => {
   })
 }
 
-/**
- * 搜素我加入的队伍
- * @param val
- * @param status
- * @returns {Promise<void>}
- */
-const listMyTeam = async () => {
-  const res = await myAxios.get('/team/list/my/join', {
-    params: {
-      searchText: val,
-      pageNum: 1,
-    }
-  });
-  if (res?.code === 0) {
-    teamList.value = res.data;
-  } else {
-    showToast("加载队伍失败，请刷新重试！");
-  }
-}
-
 const teamList = ref([]);
 
 const listTeam = async (val = '', status = 0) => {
@@ -77,10 +57,9 @@ const onTabChange = (name) => {
     // 查公开
     listTeam(searchText.value, 0);
   } else {
-    // 查私密
+    // 查加密
     listTeam(searchText.value, 2);
   }
-
 }
 
 // 根据输入的文本搜索队伍

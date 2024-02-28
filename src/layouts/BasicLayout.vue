@@ -9,12 +9,15 @@
       <van-icon name="search" size="18" />
     </template>
   </van-nav-bar>
+  <van-notice-bar
+      left-icon="volume-o"
+      color="#1989fa" background="#ecf9ff"
+      text="欢迎使用homie匹配，在这里你可以寻找你的学习homie和生活homie甚至是灵魂伴侣，同时本系统支持匹配相同爱好的homie和聊天功能，但是要遵纪守法哦。最后欢迎大家提出反馈和建议！"
+  />
 
   <div id="cotent" style="padding-bottom: 50px">
     <router-view/>
   </div>
-<!--  <router-link to="/">Go to Home</router-link>
-  <router-link to="/team">Go to Team</router-link>-->
 
   <van-tabbar route @change="onChange">
     <van-tabbar-item to="/" icon="home-o" name="index">主页</van-tabbar-item>

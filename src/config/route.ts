@@ -18,7 +18,7 @@ import FriendPage from "../pages/FriendPage.vue";
 import ChatPage from "../pages/ChatPage.vue";
 
 const routes = [
-    { path: '/', component: Index, meta: {layout: 'basic'}},
+    { path: '/', component: Index},
     { path: '/team', title:'找队伍', component: Team },
     { path: '/friend', title:'好友', component: FriendPage },
     { path: '/chat', title:'聊天界面', component: ChatPage, meta: {layout: 'chat'} },
@@ -28,11 +28,11 @@ const routes = [
     { path: '/user', title:'个人页面', component: UserPage },
     { path: '/search', title:'搜索', component: SearchPage },
     { path: '/user/listByTag', title:'搜索结果', component: SearchResultPage },
-    { path: '/user/intro', title:'用户详情', component: UserIntroPage },
+    { path: '/user/intro', title:'用户详情', component: UserIntroPage, meta: {layout: 'user-intro'} },
     { path: '/user/edit', title:'编辑信息', component: UserEditPage },
-    { path: '/user/login', title:'登录', component: UserLoginPage },
-    { path: '/user/register', title:'注册', component: UserRegisterPage },
-    { path: '/user/registerTags', title:'选择标签', component: RegisterTagsPage },
+    { path: '/user/login', title:'登录', component: UserLoginPage, meta: {layout: 'login'} },
+    { path: '/user/register', title:'注册', component: UserRegisterPage, meta: {layout: 'register'} },
+    { path: '/user/registerTags', title:'选择标签', component: RegisterTagsPage, meta: {layout: 'register-tags'}},
     { path: '/user/update', title:'个人信息修改', component: UserUpdatePage },
     { path: '/user/team/join', title:'我加入的队伍', component: UserJoinPage },
     { path: '/user/team/create', title:'我创建的队伍', component: UserTeamCreatePage },

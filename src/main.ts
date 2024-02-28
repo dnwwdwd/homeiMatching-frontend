@@ -9,6 +9,12 @@ import { DatePicker } from 'vant';
 import * as VueRouter from 'vue-router';
 import routes from './config/route.ts';
 import store from './config/store.ts';
+import BasicLayout from "./layouts/BasicLayout.vue";
+import ChatPage from "./pages/ChatPage.vue";
+import UserLoginPage from "./pages/UserLoginPage.vue";
+import UserRegisterPage from "./pages/UserRegisterPage.vue";
+import RegisterTagsPage from "./pages/RegisterTagsPage.vue";
+import UserIntroPage from "./pages/UserIntroPage.vue";
 
 
 const app= createApp(App)
@@ -39,6 +45,11 @@ const router = VueRouter.createRouter({
     history: VueRouter.createWebHistory(),
     routes: routes, // `routes: routes` 的缩写
 })
-
+app.component("default-layout", BasicLayout);
+app.component("chat-layout", ChatPage);
+app.component("login-layout", UserLoginPage);
+app.component("register-layout", UserRegisterPage);
+app.component("register-tags-layout", RegisterTagsPage);
+app.component("user-intro-layout", UserIntroPage);
 app.use(router);
 app.mount('#app')

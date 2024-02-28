@@ -1,4 +1,15 @@
 <template>
+  <van-sticky>
+    <van-nav-bar
+        :title="`选标签`"
+        left-arrow
+        @click-left="onClickLeft"
+    >
+      <template #right>
+        <van-icon name="search" size="18"/>
+      </template>
+    </van-nav-bar>
+  </van-sticky>
   <form action="/public">
     <van-search
         v-model="searchText"
@@ -122,6 +133,8 @@ const doSearchResult =  async () =>{
     username: registerUserParam.username,
     phone: registerUserParam.phone,
     tagNameList: activeIds.value,
+    longitude: registerUserParam.longitude,
+    dimension: registerUserParam.dimension,
   });
   if (userId?.code === 0) {
     showToast('注册成功');
@@ -130,10 +143,11 @@ const doSearchResult =  async () =>{
     })
   } else {
     showToast('注册失败');
-
   }
-
 };
+const onClickLeft = () => {
+  router.back();
+}
 </script>
 
 <style scoped>

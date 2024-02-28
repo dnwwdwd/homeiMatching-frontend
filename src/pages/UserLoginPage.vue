@@ -1,11 +1,22 @@
 <template>
-  <div style="text-align: center; margin-top: 15px; margin-bottom: 15px">
+  <van-sticky>
+    <van-nav-bar
+        :title="`登录`"
+        left-arrow
+        @click-left="onClickLeft"
+    >
+    </van-nav-bar>
+  </van-sticky>
+  <div style="text-align: center; margin-top: 30px; margin-bottom: 15px">
     <van-image
         round
-        width="8rem"
+        width="10rem"
         height="8rem"
-        src="https://akns-images.eonline.com/eol_images/Entire_Site/20181026/rs_600x600-181126230834-e-asia-iu-things-to-know-thumbnail.jpg?fit=around|1080:1080&output-quality=90&crop=1080:1080;center,top"
+        src="https://article-images.zsxq.com/Fnj10F-xlXGAHOGBru1dT6tmJsLr"
     />
+  </div>
+  <div id="title" style="text-align: center; margin-top: 30px; margin-bottom: 30px">
+    <h3>homie匹配，专业寻找学习伙伴</h3>
   </div>
   <van-form @submit="onSubmit">
     <van-cell-group inset>
@@ -66,6 +77,9 @@ const onSubmit = async () => {
   }
 };
 
+const onClickLeft = () => {
+  router.back();
+}
 </script>
 <style scoped>
 .systemLogo{

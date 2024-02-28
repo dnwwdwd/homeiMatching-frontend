@@ -1,4 +1,12 @@
 <template>
+  <van-sticky>
+    <van-nav-bar
+        :title="`注册`"
+        left-arrow
+        @click-left="onClickLeft"
+    >
+    </van-nav-bar>
+  </van-sticky>
   <van-form @submit="onSubmit">
     <van-cell-group inset>
       <van-field
@@ -62,6 +70,22 @@
           placeholder="请填写头像"
           :rules="[{ required: true, message: '请填写头像' }]"
       />
+      <van-field
+          v-model="longitude"
+          type="text"
+          name="经度"
+          label="经度"
+          placeholder="请填写坐标经度(-180~180)"
+          :rules="[{ required: true, message: '请填写坐标经度' }]"
+      />
+      <van-field
+          v-model="dimension"
+          type="text"
+          name="维度"
+          label="维度"
+          placeholder="请填写维度(-90~90)"
+          :rules="[{ required: true, message: '请填写维度' }]"
+      />
     </van-cell-group>
     <div style="margin: 16px;">
       <van-button round block type="primary" native-type="submit">
@@ -85,6 +109,8 @@ const gender = ref('');
 const avatarUrl = ref('');
 const username = ref('');
 const phone = ref('');
+const longitude = ref('');
+const dimension = ref('');
 
 // const onSubmit = async () => {
 //   const res = await myAxios.post('/user/register', {
@@ -112,14 +138,16 @@ const phone = ref('');
 
 const onSubmit = () => {
   const registerUserParam = {
-  userAccount: userAccount.value,
-  userPassword: userPassword.value,
-  checkPassword: checkPassword.value,
-  planetCode: planetCode.value,
-  gender: gender.value === '男' ? 1 : 0,
-  avatarUrl: avatarUrl.value,
-  username: username.value,
-  phone: phone.value,
+    userAccount: userAccount.value,
+    userPassword: userPassword.value,
+    checkPassword: checkPassword.value,
+    planetCode: planetCode.value,
+    gender: gender.value === '男' ? 1 : 0,
+    avatarUrl: avatarUrl.value,
+    username: username.value,
+    phone: phone.value,
+    longitude: longitude.value,
+    dimension: dimension.value,
 };
 
   router.push({
@@ -130,6 +158,9 @@ const onSubmit = () => {
   });
 };
 
+const onClickLeft = () => {
+  router.back();
+};
 </script>
 
 <style scoped>
