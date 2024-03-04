@@ -61,7 +61,6 @@ const loadData = async () => {
         .catch(function (error) {
           console.log('/user/recommends error',error);
         });
-
   }
   if (userListData){
     userListData.forEach((user: UserType) =>{
@@ -102,6 +101,7 @@ const onSearch = async (searchText) => {
   }
   loading.value = false;
 };
+
 
 </script>
 
