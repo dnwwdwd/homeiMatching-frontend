@@ -45,6 +45,7 @@ const router = VueRouter.createRouter({
     history: VueRouter.createWebHistory(),
     routes: routes, // `routes: routes` 的缩写
 })
+
 app.component("default-layout", BasicLayout);
 app.component("chat-layout", ChatPage);
 app.component("login-layout", UserLoginPage);

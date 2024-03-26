@@ -50,7 +50,6 @@
   import {getCurrentUser} from "../services/user.ts";
   import {useRouter} from "vue-router";
   import {mapState} from "vuex";
-  import BasicLayout from "../layouts/BasicLayout.vue";
 
   interface TeamCardListProps{
     teamList: TeamType;
