@@ -25,7 +25,6 @@
               <div class="input_style">邮箱：<input v-model="mail" type="email"></div>
               <button @click="edit" type="reset" class="alertbtn">修改</button>
               <button @click="save" type="submit" class="savebtn">保存</button>
-              <button @click="save" type="submit" class="savebtn">保存</button>
             </form>
           </div>
           <div class="r_right">
